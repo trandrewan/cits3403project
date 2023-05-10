@@ -1,0 +1,125 @@
+body {
+	background-color: hsl(0, 0%, 100%);
+    font-family: 'DM Mono', monospace;
+}
+
+.head-bannar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: auto;
+    height: 4rem;
+    width: 100%;
+    max-width: 1600px;
+    position: relative;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 100;
+}
+
+.head-bannar h2 {
+    margin-left: 15px;
+}
+
+.navbar {
+    position: absolute;
+    right: 0;
+}
+
+.navbar a {
+    font-size: 20px;
+    color: white;
+    margin-right: 30px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    font-size: larger;
+    text-decoration: underline;
+}
+
+.login-box {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 75%;
+    height: 500px;
+    background: url('cricket.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-box .summary {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    color: white;
+    top:50px;
+    
+}
+.login-box .registration {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    color: white;
+
+}
+
+.login-box input{
+    background: transparent;
+    border: none;
+    outline: none;
+
+}
+
+.login-box .registration h2 {
+	text-align: center;
+    top: 30px;
+}
+
+h2 {
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"] {
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+input[type="submit"] {
+	background-color: #4CAF50;
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	margin-top: 20px;
+	padding: 10px;
+	transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+	background-color: #3e8e41;
+}
