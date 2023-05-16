@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Login</title>
+	<link rel="stylesheet" type="text/css" href= 'static\style.css' />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&display=swap" rel="stylesheet">
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+		
+	</nav>
+	</div>
+	<div class="login-box">
+		<div class="registration">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                {{ form.username }}
+                {{ form.password }}
+                {{ form.submit }}
+            </form>
+        <a href="{{ url_for('register') }}">Don't have an account? Sign Up</a>
+		</div>
+		<div class="summary">
+			<h2>CricketGPT</h2>
+			<br/>
+			<p>The AI bot is a computer program designed to analyze and talk about cricket statistics. The bot can answer a wide range of questions related to cricket statistics, including player records, team rankings, match histories,</p>
+
+		</div>
+	</div>
+</body>
+</html>
