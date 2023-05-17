@@ -3,10 +3,10 @@
 {% block title%} Home {% endblock %}
 
 {% block content %}
-<div class="head-bannar">
+<!--<div class="head-bannar">
 	<h2><i class='bx bx-cricket-ball'></i> CricketGPT</h2>
 	<nav class="navbar"></nav>
-	</div>
+	</div> -->
 	<div class="card">
         <div class="card-body">
             <div class="card-header">
@@ -39,7 +39,7 @@
                 userMessage.className = 'user-message';
                 userMessage.innerText = input.value;
                 chat.appendChild(userMessage);
-            
+                
                 // Send POST request to Flask API
                 const response = await fetch('/api', {
                     method: 'POST',
