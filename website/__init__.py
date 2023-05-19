@@ -18,9 +18,15 @@ def create_app():
 
     from .views import views
     from .auth import auth
+    from .chat import chat
+    #from .models import User, Chat
+
 
     app.register_blueprint(views,url_prefix='/')
     app.register_blueprint(auth,url_prefix='/')
+    app.register_blueprint(chat, url_prefix='/')
+
+
     
     #Before we run the server, we are checking if we have created the database
     from .models import User, Chat

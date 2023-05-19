@@ -78,7 +78,3 @@ def register():
             return redirect(url_for('views.home'))
         
     return render_template("register.html",user=current_user)
-
-@auth.route('/history',methods = ['GET','POST'])
-def history():
-    return render_template("history.html",user=current_user)
