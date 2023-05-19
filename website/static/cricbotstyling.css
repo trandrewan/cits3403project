@@ -2,6 +2,7 @@ body {
 	background-color: hsl(0, 0%, 100%);
     background-image: url('lords.jpg');
     background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'DM Mono', monospace;
 }
 
