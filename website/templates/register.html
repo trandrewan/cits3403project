@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title%} Sign up{% endblock %}
+
+{% block content %}
+	<div class="login-box">
+		<div class="registration">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder = "Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder = "Enter your first name">
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" class="form-control" id="password1" name="password1" placeholder = "Enter your password">
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm your password</label>
+                    <input type="text" class="form-control" id="password2" name="password2" placeholder = "Confirm your password">
+                </div>
+                <br />
+                <button type="submit" class="registerButton">Submit</button>
+            </form>
+		</div>
+
+		<div class="summary">
+			<h2>CricketGPT</h2>
+			<br/>
+			<p>The AI bot is a computer program designed to analyze and talk about cricket statistics. The bot can answer a wide range of questions related to cricket statistics, including player records, team rankings, match histories,</p>
+
+		</div>
+	</div>
+
+{% endblock %} 

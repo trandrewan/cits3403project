@@ -11,7 +11,7 @@ openai.api_key = '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'
 # Define the default route to return the index.html file
 @app.route("/")
 def index():
-    return render_template("bo2.html")
+    return render_template("login.html")
 
 # Define the /api route to handle POST requests
 @app.route("/api", methods=["POST"])
