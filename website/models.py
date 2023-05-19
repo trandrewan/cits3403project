@@ -1,10 +1,12 @@
 from . import db #import the db object
 from flask_login import UserMixin #Custom class gives user object usefull things
 from sqlalchemy.sql import func
+from datetime import datetime
 
 class Chat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(50000), nullable=False)
+    date = db.Column(db.DateTime, default=datetime.now)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))  # user.id is case-sensitive and depends on your User model
 
     

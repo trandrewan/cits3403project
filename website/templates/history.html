@@ -24,7 +24,7 @@
         data.chats.forEach((chat) => {
             const chatLink = document.createElement('a');
             chatLink.href = `/chat?id=${chat.id}`;
-            chatLink.textContent = `Chat ${chat.id} - ${chat.data.split('\n')[0]}`;
+            chatLink.textContent = `Chat ${chat.date} - ${chat.data.split('\n')[0]}`;
             chatList.appendChild(chatLink);
             chatList.appendChild(document.createElement('br'));
         });

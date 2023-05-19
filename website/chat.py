@@ -22,7 +22,7 @@ def save_chat():
 @login_required
 def get_chats():
     chats = Chat.query.filter_by(user_id=current_user.id).all()
-    chats_list = [{"id": chat.id, "data": chat.data} for chat in chats]
+    chats_list = [{"id": chat.id, "data": chat.data, "date": chat.date} for chat in chats]
     return jsonify(chats=chats_list)
 
 @chat.route('/chat')
