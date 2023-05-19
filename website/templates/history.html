@@ -2,5 +2,34 @@
 {% block title%} History {% endblock %}
 
 {% block content %}
-<h1>A history of your chats, sorted by date</h1>
+<div class="card">
+    <div class="card-body">
+        <div class="card-header">
+            <h5 class="card-title">Chat History</h5>
+        </div>
+        <div id="chat-list">
+            <!-- List of past chats will be appended here -->
+        </div>
+    </div>
+</div>
+<script>
+    async function fetchChatHistory() {
+        const response = await fetch('/get_chats', {
+            method: 'GET'
+        });
+    
+        const data = await response.json();
+        const chatList = document.getElementById('chat-list');
+    
+        data.chats.forEach((chat) => {
+            const chatLink = document.createElement('a');
+            chatLink.href = `/chat?id=${chat.id}`;
+            chatLink.textContent = `Chat ${chat.id} - ${chat.data.split('\n')[0]}`;
+            chatList.appendChild(chatLink);
+            chatList.appendChild(document.createElement('br'));
+        });
+    }
+    
+    fetchChatHistory();
+</script>    
 {% endblock %} 

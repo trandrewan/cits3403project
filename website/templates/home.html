@@ -11,13 +11,69 @@
         <div class="card-body">
             <div class="card-header">
                 <h5 class="card-title">CricketGPT</h5>
-                <p class="card-text">A cricket chat bot</p>
+                <button onclick="saveChat()" id="save-button">Save Chat</button>
             </div>
             <div class="chat-window" id="chat">
             </div>
             <input type="text" id="input-field" placeholder="Type your message...">
             <button onclick="sendMessage()" id="submit-button">Send</button>
             <script>
+            async function loadChat() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const chatId = urlParams.get('id');
+                
+                if (chatId) {
+                    const response = await fetch(`/get_chat?id=${chatId}`, {
+                        method: 'GET'
+                    });
+                
+                    const data = await response.json();
+                
+                    if (data.error) {
+                        // Handle error (show error message, redirect, etc.)
+                        console.error(data.error);
+                    } else {
+                        const chat = document.getElementById('chat');
+                        const chatLines = data.chat.split('\n');
+                        chatLines.forEach(line => {
+                            // Create message element
+                            const message = document.createElement('div');
+                            
+                            // Determine the class of the message (user-message or response-message) based on its content
+                            message.className = line.startsWith('You: ') ? 'user-message' : 'response-message';
+                            
+                            message.innerText = line;
+                            chat.appendChild(message);
+                        });
+                    }
+                }
+            }
+            
+            loadChat();
+            
+            async function saveChat() {
+                const chat = document.getElementById('chat');
+                const chatContent = Array.from(chat.children).map(child => child.innerText);
+              
+                // Send POST request to Flask API
+                const response = await fetch('/save_chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ chatContent })
+                });
+            
+                const data = await response.json();
+              
+                if (data.status === 'success') {
+                    // You might want to display a success message or do something else here
+                } else {
+                    // Display an error message or handle the error
+                    alert(data.message || 'An error occurred while saving the chat.');
+                }
+            }
+            
             const input = document.getElementById('input-field');
 
                 input.addEventListener('keyup', function(event) {
@@ -63,6 +119,7 @@
                 // Clear the input field
                 input.value = '';
             }
+            
             </script>
             <span id="typing-indicator" class="typing-indicator" style="display: none;"> Bot is typing...
             </span>
