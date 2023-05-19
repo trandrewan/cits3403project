@@ -15,13 +15,13 @@ def login():
         #Getting the users email and password from the submitted form
         email = request.form.get('email')
         password = request.form.get('password')
-
         #Looking for a specific entry in the database (do they alreayd have an account)
         user = User.query.filter_by(email=email).first() #Find the user that has the same email as the one submitted
         #If we did find a user, check the password is equal to the hash
         if user:
             if check_password_hash(user.password,password): #Checking passwords
-                flash('Logged in Successfully',category = 'success') #Flash successful login
+                first_name = user.first_name
+                flash(f'Logged in Successfully, Welcome {first_name}'  ,category = 'success') #Flash successful login
                 #Keep note of the user we are logging in
                 login_user(user,remember=True)
                 return redirect(url_for('views.home'))
