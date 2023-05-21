@@ -28,9 +28,20 @@ body {
     /*position: absolute;
     right: 0;*/
     display: flex;
-    flex-direction: column;
 }
 
+.navbar-custom {
+    background-color: #4CAF50;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+    color: white
+}
+
+.navbar-brand .bx {
+    font-size: 30px;
+    color: white
+}
 .navbar a {
     font-size: 20px;
     color: white;
