@@ -62,6 +62,11 @@ h2 {
 	text-align: center;
 }
 
+ul {
+    padding-left: 100px; /* Adjust the indentation as desired */
+}
+
+
 form {
 	display: flex;
 	flex-direction: column;
