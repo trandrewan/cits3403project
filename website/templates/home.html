@@ -109,6 +109,7 @@
                 userMessage.innerText = "You: "+input.value;
                 chat.appendChild(userMessage);
                 
+                document.getElementById("typing-indicator").style.display = "inline-block";
                 // Send POST request to Flask API
                 const response = await fetch('/api', {
                     method: 'POST',
@@ -117,7 +118,6 @@
                     },
                     body: JSON.stringify({ message: input.value })
                 });
-            
                 const data = await response.json();
             
                 // Create API response message element
@@ -130,6 +130,7 @@
                 chat.scrollTop = chat.scrollHeight;
             
                 // Clear the input field
+                document.getElementById("typing-indicator").style.display = "none";
                 input.value = '';
             }
             
