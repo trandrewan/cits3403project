@@ -97,6 +97,11 @@
             async function sendMessage() {
                 const input = document.getElementById('input-field');
                 const chat = document.getElementById('chat');
+                
+                //Check if the input is empty
+                if (input.value.trim() === ''){
+                    return;
+                }
             
                 // Create user message element
                 const userMessage = document.createElement('div');
