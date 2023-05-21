@@ -1,5 +1,10 @@
+/* CSS for the more general look of the webpage. Navbar, background, flashes */
+
 body {
 	background-color: hsl(0, 0%, 100%);
+    background-image: url('lords.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'DM Mono', monospace;
 }
 
@@ -29,7 +34,16 @@ body {
 }
 .navbar-custom {
     background-color: #4CAF50 /* Replace with your desired color */
-}  
+} 
+
+.navbar-custom .navbar-nav .nav-link {
+    color: white
+}
+
+.navbar-brand .bx {
+    font-size: 30px;
+    color: white
+}
 
 .navbar a {
     font-size: 20px;
@@ -44,54 +58,6 @@ body {
     text-decoration: underline;
 }
 
-.login-box {
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 75%;
-    height: 500px;
-    background: url('cricket.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.login-box .summary {
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    color: white;
-    top:50px;
-    
-}
-.login-box .registration {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-    backdrop-filter: blur(30px);
-    color: white;
-
-}
-
-.login-box input{
-    background: transparent;
-    border: none;
-    outline: none;
-
-}
-
-.login-box .registration h2 {
-	text-align: center;
-    top: 30px;
-}
-
 h2 {
 	text-align: center;
 }
@@ -104,49 +70,6 @@ form {
 label {
 	margin-top: 10px;
 }
-
-input[type="text"],
-input[type="password"] {
-	border: none;
-	border-radius: 3px;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-	margin-bottom: 10px;
-	padding: 10px;
-}
-
-input[type="submit"] {
-	background-color: #4CAF50;
-	border: none;
-	border-radius: 3px;
-	color: #fff;
-	cursor: pointer;
-	font-size: 16px;
-	margin-top: 20px;
-	padding: 10px;
-	transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-	background-color: #3e8e41;
-}
-
-/* This is the CSS for the submit button on our register page */
-.registerButton {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-.registerButton:hover {
-    background-color: #229c12;
-    }
 
 .flash-alert-error {
     position = fixed;
@@ -172,14 +95,6 @@ input[type="submit"]:hover {
     align-items: center;
     }
 
-.dismiss-button {
-    margin-left: 10px;
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 16px;
-    cursor: pointer;
-    }
 
 .navbar-collapse {
     position: relative;
