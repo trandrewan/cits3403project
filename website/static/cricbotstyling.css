@@ -173,11 +173,12 @@ input[type="submit"]:hover {
     max-height: 250px;
     overflow-y: auto;
     height: 250px;
-    width: 96%;
+    width: 100%;
 }
 
 .card-header {
     color: #fff;
+    background-color: #4CAF50;
     border-bottom: none;
     display: flex;
     justify-content: space-between;
@@ -185,6 +186,7 @@ input[type="submit"]:hover {
     padding: 10px 20px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    width: 96%;
 }
 
 .card-header h3 {
@@ -232,24 +234,44 @@ input[type="submit"]:hover {
     background-color: #fffca5;
     color: #000000;
     padding: 1rem;
-    width: 80%;
+    padding-right: 50px;
+    width: 100%;
     margin-top: 10px;
     box-shadow: none;
     bottom: 2px;
 }
 
-#submit-button {
-    border-radius: 10px;
+
+#save-button {
+    color: white;
+    background: transparent;
+    font-size: 32px;
     border: none;
-    background-color: #ff2020;
-    color: rgb(0, 0, 0);
-    padding: 1rem;
-    margin-top: 10px;
-    width: 15%;
-    box-shadow: none;
-    bottom: 2px;
 }
 
+.input-container {
+    position: relative;
+}
+#submit-button.inside-input {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    color: grey;
+}
+#submit-button.inside-input:hover {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    color: black;
+}
 .btn-primary {
     background-color: #0084ff;
     border: none;
@@ -260,18 +282,6 @@ input[type="submit"]:hover {
 .btn-primary:hover {
     background-color: #0072cc;
     cursor: pointer;
-}
-
-#submit-button:hover {
-    border-radius: 10px;
-    border: none;
-    background-color: #e02121;
-    color: rgb(0, 0, 0);
-    padding: 1rem;
-    margin-top: 10px;
-    width: 15%;
-    box-shadow: none;
-    bottom: 2px;
 }
 
 .typing-indicator {
@@ -373,4 +383,18 @@ input[type="submit"]:hover {
     padding: 5px;
     border-radius: 10px;
     color:#000000;
+}
+#chat-list {
+    background-color: #43cc47;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    height: 500px;
+    width: 96%;
+}
+
+#chat-list a {
+    color: white;
 }

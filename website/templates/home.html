@@ -7,16 +7,19 @@
 	<h2><i class='bx bx-cricket-ball'></i> CricketGPT</h2>
 	<nav class="navbar"></nav>
 	</div> -->
+    <title>CricketGPT</title>
 	<div class="card">
         <div class="card-body">
             <div class="card-header">
                 <h5 class="card-title">CricketGPT</h5>
-                <button onclick="saveChat()" id="save-button">Save Chat</button>
+                <button onclick="saveChat()" id="save-button"><i class='bx bx-save'></i></button>
             </div>
             <div class="chat-window" id="chat">
             </div>
-            <input type="text" id="input-field" placeholder="Type your message...">
-            <button onclick="sendMessage()" id="submit-button">Send</button>
+            <div class="input-container">
+                <input type="text" id="input-field" placeholder="Type your message...">
+                <button onclick="sendMessage()" id="submit-button" class="inside-input"><i class='bx bx-send'></i></button>
+            </div>            
             <script>
             async function loadChat() {
                 const urlParams = new URLSearchParams(window.location.search);
@@ -50,11 +53,16 @@
             }
             
             loadChat();
-            
             async function saveChat() {
                 const chat = document.getElementById('chat');
                 const chatContent = Array.from(chat.children).map(child => child.innerText);
-              
+
+                // Check if the chat content is empty
+                if (chatContent.join('').trim() === '') {
+                    alert('Cannot save empty chat.');
+                    return;
+                }
+
                 // Send POST request to Flask API
                 const response = await fetch('/save_chat', {
                     method: 'POST',
@@ -63,9 +71,9 @@
                     },
                     body: JSON.stringify({ chatContent })
                 });
-            
+
                 const data = await response.json();
-              
+
                 if (data.status === 'success') {
                     // You might want to display a success message or do something else here
                 } else {
@@ -73,7 +81,7 @@
                     alert(data.message || 'An error occurred while saving the chat.');
                 }
             }
-            
+
             const input = document.getElementById('input-field');
 
                 input.addEventListener('keyup', function(event) {
@@ -93,7 +101,7 @@
                 // Create user message element
                 const userMessage = document.createElement('div');
                 userMessage.className = 'user-message';
-                userMessage.innerText = input.value;
+                userMessage.innerText = "You: "+input.value;
                 chat.appendChild(userMessage);
                 
                 // Send POST request to Flask API
