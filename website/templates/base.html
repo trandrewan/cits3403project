@@ -28,13 +28,13 @@
     <title> {% block title %} Home {% endblock %} </title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-column">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom flex-column">
         <!-- Button for mobile device-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
             <span class="navbar navbar-toggler-icon"></span>
         </button>
         <!-- Collapsable navbar with items inside defined-->
-        <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-collapse" id="navbar">
             <div class="navbar-nav">
                 <!-- Only showing the right items depending on if we are loggged in or not-->
                 {% if user.is_authenticated %}
