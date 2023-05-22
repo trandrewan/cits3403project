@@ -5,10 +5,12 @@ from flask import Blueprint, render_template, request, jsonify
 from flask_login import login_required, current_user
 from . import db
 import openai
-
+import os
+from dotenv import load_dotenv
 views = Blueprint("views", __name__)
 
-openai.api_key = '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'
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @views.route('/')
 @login_required   #cannot access the homepage unless you are logged in
