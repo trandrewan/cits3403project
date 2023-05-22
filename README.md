@@ -37,7 +37,10 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-5. Create a .env file in the root directory of the project and add your OpenAI key:
+5. Edit the .env file in the root directory of the project and add your OpenAI key:
+```
+OPENAI_API_KEY="ENTER_YOUR_API_KEY"
+```
 
 # Running the Application Locally
 To run the CricketBot application locally, follow these steps:
