@@ -1,4 +1,6 @@
 # CricketGPT - A Cricket Information Chatbot powered by OpenAI's GPT-4
+**Andrew Tran 2312096 Michael Hardie 23119639 Tatenda Makova 23072009**
+
 CricketGPT, a Cricket Information Chatbot using OpenAI's GPT-3.5 model. CricketBot is designed to respond to a wide range of cricket-related queries. This application is built using Python and Flask, with a user interface for interacting with the bot.
 
 # Application Design
