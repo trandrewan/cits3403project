@@ -37,7 +37,7 @@ source venv/bin/activate
 ```
 4. Install the necessary dependencies using pip:
 ```
-pip install -r requirements.txt
+pip install -r requirement.txt
 ```
 5. Edit the .env file in the **/website** directory of the project and add your OpenAI key:
 - to get an API Key go to https://platform.openai.com/
