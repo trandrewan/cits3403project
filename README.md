@@ -37,7 +37,7 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-5. Edit the .env file in the root directory of the project and add your OpenAI key:
+5. Edit the .env file in the **website** directory of the project and add your OpenAI key:
 - to get an API Key go to https://platform.openai.com/
 - accounts --> view api keys --> create new secret key
 ```
