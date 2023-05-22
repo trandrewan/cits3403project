@@ -1,58 +1,5 @@
-body {
-	background-color: hsl(0, 0%, 100%);
-    background-image: url('lords.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: 'DM Mono', monospace;
-}
-
-.head-bannar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    top: auto;
-    height: 4rem;
-    width: 100%;
-    max-width: 1600px;
-    position: relative;
-    background-color: #4CAF50;
-    color: white;
-    font-weight: 100;
-}
-
-.head-bannar h2 {
-    margin-left: 15px;
-}
-
-.navbar {
-    /*position: absolute;
-    right: 0;*/
-    display: flex;
-}
-
-.navbar-custom {
-    background-color: #4CAF50;
-}
-
-.navbar-custom .navbar-nav .nav-link {
-    color: white
-}
-
-.navbar-brand .bx {
-    font-size: 30px;
-    color: white
-}
-.navbar a {
-    font-size: 20px;
-    color: white;
-    margin-right: 30px;
-    text-decoration: none;
-}
-
-.navbar a:hover {
-    font-size: larger;
-    text-decoration: underline;
-}
+/* CSS for the more specific components of the webpage. The chat boxes, 
+submit buttons, login and register boxes, etc. */
 
 .login-box {
 	position: absolute;
@@ -64,6 +11,7 @@ body {
     background: url('cricket.jpg') no-repeat;
     background-size: cover;
     background-position: center;
+    border-radius: 16px;
 }
 
 .login-box .summary {
@@ -75,7 +23,7 @@ body {
     height: 100%;
     color: white;
     top:50px;
-    
+    border-radius: 16px;
 }
 .login-box .registration {
     position: absolute;
@@ -87,7 +35,7 @@ body {
     background-color: transparent;
     backdrop-filter: blur(30px);
     color: white;
-
+    border-radius: 16px;
 }
 
 .login-box input{
@@ -100,19 +48,6 @@ body {
 .login-box .registration h2 {
 	text-align: center;
     top: 30px;
-}
-
-h2 {
-	text-align: center;
-}
-
-form {
-	display: flex;
-	flex-direction: column;
-}
-
-label {
-	margin-top: 10px;
 }
 
 input[type="text"],
@@ -139,6 +74,25 @@ input[type="submit"] {
 input[type="submit"]:hover {
 	background-color: #3e8e41;
 }
+
+/* This is the CSS for the submit button on our register page */
+.registerButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+.registerButton:hover {
+    background-color: #229c12;
+    }
+
 
 /* Customize scrollbar for webkit-based browsers */
 ::-webkit-scrollbar {
@@ -252,6 +206,14 @@ input[type="submit"]:hover {
     bottom: 2px;
 }
 
+.dismiss-button {
+    margin-left: 10px;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
 
 #save-button {
     color: white;
@@ -367,6 +329,12 @@ input[type="submit"]:hover {
 
   /* Media query for mobile */
 @media (max-width: 768px) {
+    body {
+        background-image: url('lords.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
     .feature-section {
       flex-direction: column;
       height: auto;
@@ -374,6 +342,35 @@ input[type="submit"]:hover {
     
     .feature {
       margin: 20px 0;
+    }
+
+    .login-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 75%;
+        height: 500px;
+        background: url('cricket.jpg') no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 16px;
+    }
+    .login-box .summary {
+        visibility: hidden;
+    }
+    .login-box .registration {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        backdrop-filter: blur(30px);
+        color: white;
+        border-radius: 16px;
+    
     }
   }
 

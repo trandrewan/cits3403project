@@ -5,10 +5,12 @@ from flask import Blueprint, render_template, request, jsonify
 from flask_login import login_required, current_user
 from . import db
 import openai
-
+import os
+from dotenv import load_dotenv
 views = Blueprint("views", __name__)
 
-openai.api_key = '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'
+load_dotenv()
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @views.route('/')
 @login_required   #cannot access the homepage unless you are logged in
@@ -25,35 +27,32 @@ def api():
     # Define a list of cricket-related keywords
     cricket_keywords = ['cricket', 'bat', 'ball', 'wicket', 'pitch', 'stumps', 'run', 'batsman', 'bowler', 'all-rounder',
     'captain', 'umpire', 'fielder', 'catch', 'bowl', 'batting', 'bowling', 'fielding', 'innings', 'over',
-    'test match', 'one-day international', 'odi', 'twenty20', 't20', 'toss', 'duck', 'century', 'fifty',
-    'boundary', 'six', 'yorker', 'spin', 'fast bowling', 'lbw', 'leg before wicket', 'stumped', 'run-out',
-    'appeal', 'drs', 'decision review system', 'maiden over', 'powerplay', 'power hitter', 'helmet',
-    'gloves', 'pads', 'boundary rope', 'silly point', 'slip', 'cover drive', 'reverse swing', 'cricket bat grip',
-    'fielding positions', 'batting average', 'bowling average', 'runs', 'wickets', 'innings', 'matches played',
-    'centuries', 'half-centuries', 'fours', 'sixes', 'strike rate', 'economy rate', 'best bowling figures',
-    'highest individual score', 'total runs scored', 'total wickets taken', 'batting strike rate',
-    'bowling strike rate', 'batting partnerships', 'catches', 'run-outs', 'dismissals', 'maiden overs',
-    'dot balls', 'overs bowled', 'bowling variations', 'number of matches won', 'number of matches lost',
-    'number of matches drawn', 'win percentage', 'loss percentage', 'dot ball percentage',
-    'batting average against specific opposition', 'bowling average against specific opposition', 'team rankings',
-    'player rankings', 'player of the match', 'player of the series', 'hat-trick', 'duck percentage',
-    'run rate', 'average run rate', 'average balls per wicket', 'boundary percentage',
-    'dot ball percentage in powerplay', 'catches per match', 'stumping percentage', 'partnership records',
-    'run chase success rate', 'most valuable player', 'mvp', 'batting records', 'bowling records',
-    'highest team score', 'lowest team score', 'fastest century', 'fastest fifty', 'most runs in a series',
+    'test match', 'one day', 'odi','50', 'twenty20', 't20','twenty', 'toss', 'duck', 'century', 'fifty',
+    'boundary', 'six', 'four', 'yorker', 'spin', 'batter', 'bowler,' 'lbw', 'leg before wicket', 'stumped', 'run-out',
+    'appeal', 'drs', 'decision review system', 'maiden', 'powerplay', 'power hitter', 'helmet',
+    'gloves', 'pads', 'boundary', 'silly point', 'slip', 'cover drive', 'reverse', 'swing', 'grip', 'fielding', 'average', 'runs', 'wickets', 'innings', 'matches',
+    'centuries', 'half-centuries', 'fours', 'sixes', 'rate', 'figures',
+    'score', 'scored', 'total wickets taken', 'partnerships', 'catches', 'run outs', 'dismissals', 'maiden', 'maidens'
+    'dot','dots', 'overs', 'variations', 'won', 'lost',
+    'drawn', 'percentage', 'percentage', 'dot-ball',
+    'rankings', 'player rankings', 'player of the match', 'player of the series', 'hat-trick', 'duck percentage',
+    'run rate', 'average run rate', 'average balls per wicket', 'boundary percentage', 
+    'catches per match', 'stumping percentage', 'partnership records',
+    'run chase success rate', 'most valuable player', 'mvp', 'records', 'bowling records',
+    'highest', 'lowest', 'fastest century', 'fastest fifty', 'most runs in a series',
     'most wickets in a series', 'most sixes in a career', 'most fours in a career', 'most centuries in a career',
     'most five-wicket hauls in a career', 'most catches by a fielder', 'most stumpings by a wicketkeeper',
-    'most dismissals by a wicketkeeper', 'best batting average in a career', 'best bowling average in a career',
+    'most dismissals by a wicketkeeper', 'career', 'best bowling average in a career',
     'best economy rate in a career', 'most matches as captain', 'most runs as captain', 'most wickets as captain',
     'most catches as captain', 'most sixes in an innings', 'most fours in an innings', 'most wickets in an innings',
     'most runs in a calendar year', 'most wickets in a calendar year', 'most centuries in a calendar year',
-    'most dismissals in a calendar year', 'highest individual score in a match', 'best bowling figures in a match',
+    'most dismissals in a calendar year', 'best bowling figures in a match',
     'fastest ball bowled', 'most matches played by a player', 'most consecutive matches played',"wicket", "run", 
     "boundary", "over", "innings", "bowler", "batsman", "fielder", "umpire", "captain", "pitch", "stumps", "crease", 
     "lbw", "yorker", "bouncer", "spinner", "seamer", "off-spinner", "leg-spinner", "googly", "reverse swing", 
     "cover drive", "square cut", "pull shot", "hook shot", "sweep shot", "yorker", "doosra", "slog sweep", "slip", 
     "gully", "silly point", "long on", "long off", "mid-wicket", "fine leg", "deep square leg", "deep mid-wicket", 
-    "deep cover", "deep point", "deep fine leg", "powerplay", "dot ball", "wide", "no-ball", "six", "four", "catch",
+    "deep cover", "deep point", "deep fine leg", "powerplay", "wide", "no-ball", "six", "four", "catch",
     "stumping", "run out", "follow-on", "toss", "toss winner", "fielding", "batting", "bowling", "all-rounder",
     "maiden over", "century", "fifty", "double century", "triple century", "hat-trick", "drs", "run rate",
     "economy rate", "strike rate", "maiden", "extra", "appeal", "review", "power hitter", "pinch hitter",
@@ -82,7 +81,7 @@ def api():
     "yorkers", "bouncers", "spinners", "seamers", "off-spinners", "leg-spinners", "googlies", "reverse swings", 
     "cover drives", "square cuts", "pull shots", "hook shots", "sweep shots", "yorkers", "doosras", "slog sweeps", 
     "slips", "gullies", "silly points", "long ons", "long offs", "mid-wickets", "fine legs", "deep square legs", 
-    "deep mid-wickets", "deep covers", "deep points", "deep fine legs", "powerplays", "dot balls", "wides", 
+    "deep mid-wickets", "deep covers", "deep points", "deep fine legs", "powerplays", "wides", 
     "no-balls", "sixes", "fours", "catches", "stumpings", "run outs", "follow-ons", "tosses", "toss winners", "fieldings", 
     "battings", "bowlings", "all-rounders", "maiden overs", "centuries", "fifties", "double centuries", "triple centuries", 
     "hat-tricks", "drs", "run rates", "economy rates", "strike rates", "maidens", "extras", "appeals", "reviews", "power hitters",
@@ -145,9 +144,10 @@ def api():
     "demerara cricket club ground", "queen's park cricket club", "spartan cricket club ground", "sir vivian richards stadium", 
     "sri lankas ports authority cricket club ground", "sinhalese sports club ground", "r premadasa stadium", 
     "rajiv gandhi international stadium", "tribhuvan university international cricket ground", "bay oval", "mcg", "marrara cricket ground",
-    "traeger park", "city oval", "amy's square", "kaliningrad stadium", "highest", "lowest", "best", "average", "averages", "test", "one day international",
+    "traeger park", "city oval", "amy's square", "kaliningrad stadium", "lowest", "best", "average", "averages", "test", "one day international",
     "odi", "t20 international", "first class", "list a", "twenty20", "domestic t20 league", "ipl", "most", "least", "technique", "play", "cricket",
-    "international", "stadiums", "stadium", "ground", "pitch", "statistics", "stats", "women", "women's", "womens", "team", "teams", "home", "away","ashes"]
+    "international", "stadiums", "stadium", "ground", "pitch", "statistics", "stats", "women", "women's", "womens", "team", "teams", "home", "away","ashes","hello","hi","how are you",
+    "thanks", "thank you", 'bye','goodbye','morning','afternoon']
 
 
     # Convert the user's message to lowercase and split it into words

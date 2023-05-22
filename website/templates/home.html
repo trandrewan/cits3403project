@@ -7,7 +7,6 @@
 	<h2><i class='bx bx-cricket-ball'></i> CricketGPT</h2>
 	<nav class="navbar"></nav>
 	</div> -->
-    <title>CricketGPT</title>
 	<div class="card">
         <div class="card-body">
             <div class="card-header">
@@ -97,6 +96,11 @@
             async function sendMessage() {
                 const input = document.getElementById('input-field');
                 const chat = document.getElementById('chat');
+                
+                //Check if the input is empty
+                if (input.value.trim() === ''){
+                    return;
+                }
             
                 // Create user message element
                 const userMessage = document.createElement('div');
@@ -104,6 +108,7 @@
                 userMessage.innerText = "You: "+input.value;
                 chat.appendChild(userMessage);
                 
+                document.getElementById("typing-indicator").style.display = "inline-block";
                 // Send POST request to Flask API
                 const response = await fetch('/api', {
                     method: 'POST',
@@ -112,7 +117,6 @@
                     },
                     body: JSON.stringify({ message: input.value })
                 });
-            
                 const data = await response.json();
             
                 // Create API response message element
@@ -125,6 +129,7 @@
                 chat.scrollTop = chat.scrollHeight;
             
                 // Clear the input field
+                document.getElementById("typing-indicator").style.display = "none";
                 input.value = '';
             }
             
